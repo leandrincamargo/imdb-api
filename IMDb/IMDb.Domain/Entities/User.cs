@@ -11,8 +11,11 @@ namespace IMDb.Domain.Entities
         public string SecondName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
         public bool Status { get; set; }
+
+        public Guid RoleId { get; set; }
+        public virtual Role Role { get; set; }
+
 
         private ICollection<MovieClassification> _moviesClassification { get; set; }
         public virtual IReadOnlyCollection<MovieClassification> MoviesClassification { get { return _moviesClassification as Collection<MovieClassification>; } }

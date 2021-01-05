@@ -12,6 +12,7 @@ namespace IMDb.Domain.Entities
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
+        public byte MovieScaleId { get; set; }
         public virtual MovieScale Vote { get; set; }
     }
 }

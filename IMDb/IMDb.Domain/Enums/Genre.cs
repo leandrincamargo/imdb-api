@@ -1,6 +1,6 @@
 ﻿namespace IMDb.Domain.Enums
 {
-    public enum Genre
+    public enum Genre : byte
     {
         Action = 1,
         Adventure = 2,

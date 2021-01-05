@@ -1,6 +1,6 @@
 ﻿namespace IMDb.Domain.Enums
 {
-    public enum MovieScale
+    public enum MovieScale : byte
     {
         Bad = 1,
         Nice = 2,

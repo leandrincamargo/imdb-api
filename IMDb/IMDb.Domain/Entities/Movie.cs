@@ -11,10 +11,12 @@ namespace IMDb.Domain.Entities
         public string Name { get; set; }
         public string Director { get; set; }
         public DateTime MovieRelease { get; set; }
-        public virtual Genre Genres { get; set; }
         public bool Status { get; set; }
         [NotMapped]
         public decimal Media { get; set; }
+
+        public byte GenreId { get; set; }
+        public virtual Genre Genre { get; set; }
 
         private ICollection<ActorMovie> _actorsMovie { get; set; }
         public virtual IReadOnlyCollection<ActorMovie> ActorsMovie { get { return _actorsMovie as Collection<ActorMovie>; } }
