@@ -20,8 +20,9 @@ namespace IMDb.Infraestructure.DBConfiguration
         {
         }
 
-        public DbSet<Actor> Actor { get; set; }
-        public DbSet<ActorMovie> ActorMovie { get; set; }
+        public DbSet<Cast> Cast { get; set; }
+        public DbSet<CastOfMovie> CastOfMovie { get; set; }
+        public DbSet<CastType> CastType { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Movie> Movie { get; set; }
         public DbSet<MovieClassification> MovieClassification { get; set; }

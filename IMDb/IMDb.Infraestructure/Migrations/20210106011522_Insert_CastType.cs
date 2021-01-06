@@ -4,23 +4,23 @@ using System;
 
 namespace IMDb.Infraestructure.Migrations
 {
-    public partial class Insert_MovieScale : Migration
+    public partial class Insert_CastType : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            foreach (MovieScale movieScale in Enum.GetValues(typeof(MovieScale)))
+            foreach (CastType castType in Enum.GetValues(typeof(CastType)))
             {
                 migrationBuilder
-                    .Sql($"insert into dbo.MovieScale (Id, Name) values('{(byte)movieScale}', '{movieScale}')");
+                    .Sql($"insert into dbo.CastType (Id, Name) values('{(byte)castType}', '{castType}')");
             }
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            foreach (MovieScale movieScale in Enum.GetValues(typeof(MovieScale)))
+            foreach (CastType castType in Enum.GetValues(typeof(CastType)))
             {
                 migrationBuilder
-                    .Sql($"delete from dbo.MovieScale (Id, Name) values('{(byte)movieScale}', '{movieScale}')");
+                    .Sql($"delete from dbo.CastType (Id, Name) values('{(byte)castType}', '{castType}')");
             }
         }
     }

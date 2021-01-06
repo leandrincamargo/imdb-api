@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IMDb.Domain.Entities
 {
@@ -9,24 +8,21 @@ namespace IMDb.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Director { get; set; }
         public DateTime MovieRelease { get; set; }
         public bool Status { get; set; }
-        [NotMapped]
-        public decimal Media { get; set; }
 
         public byte GenreId { get; set; }
         public virtual Genre Genre { get; set; }
 
-        private ICollection<ActorMovie> _actorsMovie { get; set; }
-        public virtual IReadOnlyCollection<ActorMovie> ActorsMovie { get { return _actorsMovie as Collection<ActorMovie>; } }
+        private ICollection<CastOfMovie> _castOfMovies { get; set; }
+        public virtual IReadOnlyCollection<CastOfMovie> CastOfMovies { get { return _castOfMovies as Collection<CastOfMovie>; } }
 
         private ICollection<MovieClassification> _moviesClassification { get; set; }
         public virtual IReadOnlyCollection<MovieClassification> MoviesClassification { get { return _moviesClassification as Collection<MovieClassification>; } }
 
         public Movie()
         {
-            _actorsMovie = new Collection<ActorMovie>();
+            _castOfMovies = new Collection<CastOfMovie>();
             _moviesClassification = new Collection<MovieClassification>();
         }
     }

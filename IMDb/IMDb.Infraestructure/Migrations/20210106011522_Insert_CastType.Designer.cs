@@ -4,14 +4,16 @@ using IMDb.Infraestructure.DBConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IMDb.Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210106011522_Insert_CastType")]
+    partial class Insert_CastType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +40,7 @@ namespace IMDb.Infraestructure.Migrations
 
                     b.HasIndex("CastTypeId");
 
-                    b.ToTable("Cast");
+                    b.ToTable("Actor");
                 });
 
             modelBuilder.Entity("IMDb.Domain.Entities.CastOfMovie", b =>
@@ -59,7 +61,7 @@ namespace IMDb.Infraestructure.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("CastOfMovie");
+                    b.ToTable("ActorMovie");
                 });
 
             modelBuilder.Entity("IMDb.Domain.Entities.CastType", b =>
