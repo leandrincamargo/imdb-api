@@ -11,7 +11,7 @@ namespace IMDb.Infraestructure.Interfaces.Repositories.EFCore
         #region ProtectedMethods
         protected abstract IQueryable<TEntity> GenerateQuery(Expression<Func<TEntity, bool>> filter = null,
                                                 Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                                                params string[] includeProperties);
+                                                params Expression<Func<TEntity, object>>[] include);
 
         protected abstract IEnumerable<TEntity> GetYieldManipulated(IEnumerable<TEntity> entities, Func<TEntity, TEntity> DoAction);
         #endregion ProtectedMethods
