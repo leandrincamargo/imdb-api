@@ -1,5 +1,7 @@
 ﻿using IMDb.Infraestructure.DBConfiguration;
+using IMDb.Infraestructure.Interfaces.Repositories.Domain;
 using IMDb.Infraestructure.Interfaces.Repositories.Standard;
+using IMDb.Infraestructure.Repositories.Domain;
 using IMDb.Infraestructure.Repositories.Standard;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +18,12 @@ namespace IMDb.Infraestructure.IoC.ORMs
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(conn));
 
             services.AddScoped(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
+            services.AddScoped<ICastOfMovieRepository, CastOfMovieRepository>();
+            services.AddScoped<ICastRepository, CastRepository>();
+            services.AddScoped<IMovieClassificationRepository, MovieClassificationRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

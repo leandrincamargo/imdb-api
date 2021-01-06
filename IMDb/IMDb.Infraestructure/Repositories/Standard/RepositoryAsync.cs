@@ -97,11 +97,11 @@ namespace IMDb.Infraestructure.Repositories.Standard
         #region ProtectedMethods
         protected override IQueryable<TEntity> GenerateQuery(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            params string[] includeProperties)
+            params Expression<Func<TEntity, object>>[] include)
         {
             IQueryable<TEntity> query = dbSet;
             query = GenerateQueryableWhereExpression(query, filter);
-            query = GenerateIncludeProperties(query, includeProperties);
+            query = GenerateIncludeProperties(query, include);
 
             if (orderBy != null)
                 return orderBy(query);
@@ -117,10 +117,11 @@ namespace IMDb.Infraestructure.Repositories.Standard
             return query;
         }
 
-        private IQueryable<TEntity> GenerateIncludeProperties(IQueryable<TEntity> query, params string[] includeProperties)
+        private IQueryable<TEntity> GenerateIncludeProperties(IQueryable<TEntity> query, params Expression<Func<TEntity, object>>[] include)
         {
-            foreach (string includeProperty in includeProperties)
-                query = query.Include(includeProperty);
+            if (include != null)
+                foreach (var includeProperty in include)
+                    query = query.Include(includeProperty);
 
             return query;
         }
